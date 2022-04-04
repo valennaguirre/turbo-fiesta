@@ -1,0 +1,43 @@
+@model Mami.Models.ViewModels.BuscarAfiliadoViewModel
+
+@{
+    ViewBag.Title = "Buscar afiliado";
+}
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="~/Onco/Index">Padrón</a>
+            </li>
+            <li class="breadcrumb-item active">Buscar afiliado</li>
+        </ol>
+
+        <div class="col-12 row">
+            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-6">
+                <h3>Buscar informaci&oacute;n del afiliado</h3>
+            </div>
+            <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-6 text-right">
+                <a class="btn btn-secondary" href="@Url.Action("Index", "Onco")">Volver</a>
+            </div>
+        </div>
+        <hr />
+        @using (Html.BeginForm("Buscar", "Onco", FormMethod.Post))
+        {
+            <div class="col-12 col-sm-12 form">
+                <div class="row form-group">
+                    <div class="col-12 col-sm-12 col-md-3">
+                        @Html.LabelFor(m => m.AFI_NroDoc, "Número de documento")
+                        @Html.TextBoxFor(m => m.AFI_NroDoc, new { Value = "", placeholder = "Ingrese el número de documento", @class = "form-control", @type = "number", required = "required" })
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="col-12 col-sm-12 col-md-3">
+                <button type="submit" class="btn btn-secondary col-sm-12">Buscar</button>
+            </div>
+
+        }
+
+    </div>
+</div>
