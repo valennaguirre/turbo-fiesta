@@ -1,0 +1,75 @@
+@using Mami.Models.ViewModels
+@model AfiliadoViewModel
+
+@Html.HiddenFor(m => m.id)
+<div class="row form-group">
+    <div class="col-12 col-sm-12 col-md-3">
+        @Html.LabelFor(m => m.afiliado.AFI_ApeyNom, "Apellido y nombre")
+        @Html.TextBoxFor(m => m.afiliado.AFI_ApeyNom, new { @readonly = "readonly", @class = "form-control" })
+    </div>
+    <div class="col-12 col-sm-12 col-md-3 offset-md-1">
+        @Html.LabelFor(m => m.afiliado.AFI_NroDoc, "N° de documento")
+        @Html.TextBoxFor(m => m.afiliado.AFI_NroDoc, new { @readonly = "readonly", @class = "form-control" })
+    </div>
+    <div class="col-12 col-sm-12 col-md-3 offset-md-1">
+        @Html.LabelCustom("Sexo")
+        @if (Model.afiliado.AFI_Sexo == 1)
+        {
+            @Html.TextBoxCustom("Masculino")
+        }
+        else
+        {
+            if (Model.afiliado.AFI_Sexo == 2)
+            {
+                @Html.TextBoxCustom("Femenino")
+            }
+        }
+    </div>
+</div>
+
+<div class="row form-group">
+    <div class="col-12 col-sm-12 col-md-3">
+        @Html.LabelFor(m => m.afiliado.AFI_NroAfil, "N° de afiliado")
+        @Html.TextBoxFor(m => m.afiliado.AFI_NroAfil, new { @readonly = "readonly", @class = "form-control" })
+    </div>
+    <div class="col-12 col-sm-12 col-md-3 offset-md-1">
+        @Html.LabelFor(m => m.afiliado.AFI_FechaNac, "Fecha de nacimiento")
+        @Html.TextBoxFor(m => m.afiliado.AFI_FechaNac, "{0:dd/MM/yyyy}", new { @readonly = "readonly", @class = "form-control" })
+    </div>
+</div>
+<hr />
+<div class="row form-group">
+    <div class="col-12 col-sm-12 col-md-3">
+        @Html.LabelCustom("Calle")
+        @Html.TextBoxCustom(Model.domicilio.DOM_Calle + " " + Model.domicilio.DOM_Nro)
+    </div>
+    <div class="col-12 col-sm-12 col-md-3 offset-md-1">
+        @Html.LabelCustom("Piso")
+        @Html.TextBoxCustom(Model.domicilio.DOM_Piso)
+    </div>
+    <div class="col-12 col-sm-12 col-md-3 offset-md-1">
+        @Html.LabelCustom("Departamento")
+        @Html.TextBoxCustom(Model.domicilio.DOM_Dpto)
+    </div>
+</div>
+
+<div class="row form-group">
+    <div class="col-12 col-sm-12 col-md-3">
+        @Html.LabelFor(m => m.domicilio.localidad.LOCALIDADES_DESCRIPCION, "Localidad")
+        @Html.TextBoxFor(m => m.domicilio.localidad.LOCALIDADES_DESCRIPCION, new { @readonly = "readonly", @class = "form-control" })
+    </div>
+    <div class="col-12 col-sm-12 col-md-3 offset-md-1">
+        @Html.LabelFor(m => m.domicilio.DOM_CodigoPostal, "Código postal")
+        @Html.TextBoxFor(m => m.domicilio.DOM_CodigoPostal, new { @readonly = "readonly", @class = "form-control" })
+    </div>
+</div>
+<div class="row form-group">
+    <div class="col-12 col-sm-12 col-md-3">
+        @Html.LabelFor(m => m.domicilio.localidad.partido.region.REGIONES_DESCRIPCION, "Delegación")
+        @Html.TextBoxFor(m => m.domicilio.localidad.partido.region.REGIONES_DESCRIPCION, new { @readonly = "readonly", @class = "form-control" })
+    </div>
+    <div class="col-12 col-sm-12 col-md-3 offset-md-1">
+        @Html.LabelFor(m => m.domicilio.localidad.partido.region.REGIONES_DESCRIPCION, "Región")
+        @Html.TextBoxFor(m => m.domicilio.localidad.partido.region.REGIONES_DESCRIPCION, new { @readonly = "readonly", @class = "form-control" })
+    </div>
+</div>
