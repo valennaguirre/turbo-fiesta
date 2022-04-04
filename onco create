@@ -1,0 +1,57 @@
+@model Mami.Models.ViewModels.AfiliadoViewModel
+
+@{
+    ViewBag.Title = "Agregar";
+}
+
+
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="~/Onco/Index">Padrón</a>
+            </li>
+            <li class="breadcrumb-item active">@Model.afiliado.AFI_ApeyNom</li>
+        </ol>
+        <div class="col-12 row">
+            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-6">
+                <h3>Agregar afiliada</h3>
+            </div>
+            <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-6 text-right">
+                <a class="btn btn-secondary" href="@Request.UrlReferrer">Volver</a>
+            </div>
+        </div>
+        <hr />
+        <div class="col-12 col-sm-12 form">
+            @using (Html.BeginForm("Create", "Home", FormMethod.Post))
+            {
+                @Html.Partial("~/Views/Onco/_AfiliadoPartial.cshtml")
+                <hr />
+                <div class="row form-group">
+                    <div class="col-12 col-sm-12 col-md-3">
+                        @Html.LabelFor(m => m.afiliado.AFI_Mail, "Email")
+                        @Html.TextBoxFor(m => m.afiliado.AFI_Mail, new { @class = "form-control" })
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-1 offset-md-1">
+                        @Html.LabelFor(m => m.telefono.tel_area_cel, "Celular")
+                        @Html.TextBoxFor(m => m.telefono.tel_area_cel, new { placeholder = "Cod. área", @class = "form-control" })
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-2">
+                        <br />
+                        @Html.TextBoxFor(m => m.telefono.tel_celular, new { placeholder = "Número", @class = "mt-2 form-control" })
+                    </div>
+                    <!-- <div class="col-12 col-sm-12 col-md-3 offset-md-1">
+                        @Html.LabelFor(m => m.fecha, "Fecha de última menstruación")
+                        @Html.TextBoxFor(m => m.fecha, new { Value = "", placeholder = "DD-MM-AAAA", @class = "startDate form-control" })
+                    </div> -->
+                </div>
+                <br />
+                <div class="col-12 col-sm-12">
+                    <button type="submit" class="btn btn-secondary col-sm-3 offset-sm-4">Agregar afiliado</button>
+                </div>
+            }
+            <br />
+        </div>
+    </div>
+</div>
