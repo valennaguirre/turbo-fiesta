@@ -1,0 +1,49 @@
+@model Mami.Models.ViewModels.EliminarAfiliadoViewModel
+
+@{
+    ViewBag.Title = "Eliminar";
+}
+
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="~/Onco/Index">Oncológico</a>
+            </li>
+            <li class="breadcrumb-item active">@Model.afiliado.AFI_ApeyNom</li>
+        </ol>
+        <div class="col-12 row">
+            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-6">
+                <h3>Dar de baja</h3>
+            </div>
+            <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-6 text-right">
+                <a class="btn btn-secondary" href="@Request.UrlReferrer">Volver</a>
+            </div>
+        </div>
+        <hr />
+        @using (Html.BeginForm("Delete", "Home", FormMethod.Post))
+        {
+            <div class="col-12 col-sm-12 form">
+                <div class="row form-group">
+                    <div class="col-12 col-sm-12 col-md-12">
+                        <h5>
+                            ¿Desea eliminar del programa al afiliado
+                            @Model.afiliado.AFI_ApeyNom con DNI @Model.afiliado.AFI_NroDoc?
+                        </h5>
+                        <br>
+
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-3">
+                        @Html.LabelFor(m => m.id_motivo, "Motivo de baja")
+                        @Html.DropDownListFor(m => m.id_motivo, Model.listado_motivos, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-2">
+                <button type="submit" class="btn btn-danger col-sm-12">Dar de baja</button>
+            </div>
+        }
+    </div>
+</div>
